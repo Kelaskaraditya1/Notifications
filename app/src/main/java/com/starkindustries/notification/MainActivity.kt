@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -61,6 +62,13 @@ class MainActivity : AppCompatActivity() {
             notification.setContentTitle(binding.title.text.toString().trim())
             notification.setContentText(binding.content.text.toString().trim())
             notification.setSmallIcon(R.drawable.batman)
+            notification.setAutoCancel(true)
+            notification.setColor(Color.RED)
+            notification.addAction(R.drawable.batman,"back",null)
+            notification.addAction(R.drawable.batman,"play",null)
+            notification.addAction(R.drawable.batman,"next",null)
+            notification.setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            notification.setOnlyAlertOnce(true)
             notification.setPriority(NotificationCompat.PRIORITY_HIGH).build()
             var manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             manager.notify(1,notification.build())
